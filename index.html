@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TIDElwave Research Solutions — Certificates of Analysis</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@500;700&family=Inter:wght@400;500;600;700&display=swap');
+  :root{
+    --tw-ink-900:#05070c; --tw-ink-800:#0a0e16; --tw-ink-700:#111722; --tw-ink-600:#1a2130; --tw-ink-500:#262f41;
+    --tw-chrome-100:#f4f8fc; --tw-chrome-200:#dde5ee; --tw-chrome-300:#bcc7d4; --tw-chrome-400:#93a1b1; --tw-chrome-500:#6d7b8c; --tw-chrome-600:#4c5766; --tw-chrome-700:#333c48;
+    --tw-blue-100:#e8f2ff; --tw-blue-200:#b9d8ff; --tw-blue-300:#7fb6ff; --tw-blue-400:#3d92ff; --tw-blue-500:#0a6be1; --tw-blue-600:#0654b4; --tw-blue-700:#043d84; --tw-blue-800:#032a5c; --tw-blue-900:#021a3a;
+    --tw-verified:#2fbf8f; --tw-warn:#e0a13c;
+    --tw-shadow-sm:0 0 0 1px var(--tw-ink-500);
+    --tw-shadow-md:0 0 0 1px #313b4c,0 6px 18px rgba(0,0,0,.55);
+    --tw-shadow-lg:0 0 0 1px #4c5766,0 16px 40px rgba(0,0,0,.7);
+    --tw-glow:0 0 24px rgba(10,107,225,.35);
+    --font-display:"Saira Condensed","Arial Narrow",sans-serif;
+    --font-body:"Inter",system-ui,sans-serif;
+    --font-mono:ui-monospace,"SF Mono",monospace;
+    --radius-sm:4px; --radius-md:8px; --radius-lg:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--font-body);background:var(--tw-ink-900);color:var(--tw-chrome-200);-webkit-font-smoothing:antialiased}
+
+  /* ---- nav + page head ---- */
+  .navbar{display:flex;align-items:center;height:64px;padding:0 20px;background:var(--tw-ink-900);border-bottom:1px solid var(--tw-ink-500)}
+  .brand{font-family:var(--font-display);font-weight:700;font-size:19px;letter-spacing:.03em;text-transform:uppercase;color:var(--tw-chrome-100)}
+  .brand span{color:var(--tw-blue-400)}
+
+  header{position:relative;background:var(--tw-ink-800);padding:40px 20px 0;overflow:hidden}
+  .page-head{max-width:640px;margin:0 auto;text-align:center;position:relative;padding-bottom:56px}
+  .page-title{font-family:var(--font-display);font-weight:700;font-size:42px;line-height:.98;text-transform:uppercase;letter-spacing:-0.01em;margin-bottom:10px;color:var(--tw-chrome-100)}
+  @media (min-width:560px){.page-title{font-size:56px}}
+  /* tw-chrome-text: the background-clip:text gradient reads great at large
+     marketing-hero scale, but at this weight/size against the near-black
+     ground the letterforms' busy interior strokes land on the gradient's
+     dark band and the headline stops being legible — a solid chrome-100
+     fill reads correctly instead. Chrome-edge (cards, plates, badges)
+     carries the material everywhere else on this page. */
+  .tagline{position:relative;font-size:13.5px;color:var(--tw-chrome-300);letter-spacing:.03em}
+  .verify{position:relative;margin-top:16px;display:inline-flex;align-items:center;gap:7px;font-size:12.5px;border:1px solid var(--tw-ink-500);background:var(--tw-ink-700);padding:6px 14px;border-radius:100px;color:var(--tw-chrome-200)}
+  .verify svg{width:14px;height:14px;fill:var(--tw-verified)}
+  .tide-band{position:absolute;left:0;right:0;bottom:0;height:40px;line-height:0}
+  .tide-band svg{width:100%;height:100%;display:block}
+
+  main{max-width:640px;margin:0 auto;padding:24px 16px 40px;position:relative}
+  .search{display:flex;align-items:center;gap:10px;background:var(--tw-ink-700);border:1px solid var(--tw-ink-500);border-radius:var(--radius-md);padding:13px 16px;margin-bottom:18px;transition:border-color .15s}
+  .search:focus-within{border-color:var(--tw-blue-500)}
+  .search svg{width:17px;height:17px;fill:var(--tw-chrome-500);flex:none}
+  .search input{border:none;outline:none;font-size:15.5px;width:100%;background:transparent;color:var(--tw-chrome-100);font-family:var(--font-body)}
+  .search input::placeholder{color:var(--tw-chrome-500)}
+  .hint{font-size:12.5px;color:var(--tw-chrome-500);text-align:center;margin-bottom:22px}
+  .demo-note{background:var(--tw-ink-700);color:var(--tw-warn);font-size:12px;text-align:center;padding:8px 14px;border:1px solid var(--tw-ink-500);border-radius:var(--radius-sm);margin-bottom:18px}
+  .loading{text-align:center;color:var(--tw-chrome-500);font-size:14px;padding:40px 0}
+  .spinner{display:inline-block;width:22px;height:22px;border:3px solid var(--tw-ink-500);border-top-color:var(--tw-blue-500);border-radius:50%;animation:spin .8s linear infinite;vertical-align:middle;margin-right:10px}
+  @keyframes spin{to{transform:rotate(360deg)}}
+
+  .card{
+    border:1px solid transparent;border-radius:var(--radius-md);
+    background:
+      linear-gradient(var(--tw-ink-700),var(--tw-ink-700)) padding-box,
+      linear-gradient(160deg,var(--tw-chrome-300),var(--tw-chrome-700) 45%,var(--tw-chrome-200)) border-box;
+    padding:18px 18px 16px;margin-bottom:14px;box-shadow:var(--tw-shadow-sm);
+    transition:box-shadow .18s ease-out;
+  }
+  .card:hover{box-shadow:var(--tw-shadow-md)}
+  .card-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+  .pname{font-family:var(--font-display);font-weight:700;font-size:20px;text-transform:uppercase;letter-spacing:-0.005em;color:var(--tw-chrome-100)}
+  .pdose{font-size:13px;color:var(--tw-chrome-400);margin-top:3px}
+  .badge{flex:none;display:inline-flex;align-items:center;gap:5px;border:1px solid var(--tw-ink-500);background:var(--tw-ink-800);color:var(--tw-verified);font-family:var(--font-display);font-weight:500;font-size:11px;letter-spacing:.14em;text-transform:uppercase;padding:5px 11px;border-radius:var(--radius-sm)}
+  .badge svg{width:12px;height:12px;fill:var(--tw-verified)}
+  .badge.blue{color:var(--tw-verified)}
+  .badge.blue svg{fill:var(--tw-verified)}
+  .meta{display:grid;grid-template-columns:1fr 1fr;gap:8px 14px;margin:13px 0 14px;font-size:12.5px}
+  .meta div{color:var(--tw-chrome-500);font-family:var(--font-display);font-weight:500;letter-spacing:.1em;text-transform:uppercase;font-size:10.5px}
+  .meta b{color:var(--tw-chrome-100);font-weight:500;display:block;font-size:13px;margin-top:3px;font-family:var(--font-mono)}
+  .purity{grid-column:1/-1;border:1px solid transparent;border-radius:var(--radius-sm);padding:8px 12px;display:flex;justify-content:space-between;align-items:center;
+    background:
+      linear-gradient(var(--tw-ink-800),var(--tw-ink-800)) padding-box,
+      linear-gradient(160deg,var(--tw-chrome-300),var(--tw-chrome-700) 45%,var(--tw-chrome-200)) border-box;}
+  .purity b{display:inline;font-family:var(--font-mono);font-weight:600;font-size:16px;color:var(--tw-blue-300);margin:0}
+  .btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;background:transparent;color:var(--tw-blue-300);border:1px solid var(--tw-blue-500);border-radius:var(--radius-md);padding:12px;font-size:14.5px;font-weight:500;cursor:pointer;text-decoration:none;letter-spacing:.02em;transition:border-color .18s ease-out,box-shadow .18s ease-out,color .18s ease-out}
+  .btn:hover{border-color:var(--tw-blue-400);color:var(--tw-blue-200);box-shadow:var(--tw-glow)}
+  .btn:active{border-color:var(--tw-blue-600);box-shadow:none}
+  .btn svg{width:15px;height:15px;fill:currentColor}
+  footer{text-align:center;font-size:12px;color:var(--tw-chrome-500);padding:16px 20px 40px;line-height:1.7;background:var(--tw-ink-800)}
+  footer a{color:var(--tw-blue-300);text-decoration:none}
+  footer a:hover{color:var(--tw-blue-400)}
+  .none{display:none !important}
+  .empty{text-align:center;color:var(--tw-chrome-500);font-size:14px;padding:30px 0;line-height:1.7}
+  .empty a{color:var(--tw-blue-300);text-decoration:none;font-weight:600}
+  /* ---- tabs + COA history ---- */
+  .tabs{display:flex;border:1px solid var(--tw-ink-500);border-radius:var(--radius-md);overflow:hidden;margin-bottom:16px}
+  .tab{flex:1;border:none;background:var(--tw-ink-700);color:var(--tw-chrome-400);font-family:var(--font-body);font-size:14px;font-weight:500;padding:10px 8px;cursor:pointer;letter-spacing:.02em;transition:background .15s,color .15s}
+  .tab+.tab{border-left:1px solid var(--tw-ink-500)}
+  .tab:hover{background:var(--tw-ink-600)}
+  .tab.active{background:var(--tw-ink-600);color:var(--tw-blue-300);box-shadow:inset 0 -2px 0 var(--tw-blue-500)}
+  .hgroup{border:1px solid transparent;border-radius:var(--radius-md);margin-bottom:14px;box-shadow:var(--tw-shadow-sm);overflow:hidden;
+    background:
+      linear-gradient(var(--tw-ink-700),var(--tw-ink-700)) padding-box,
+      linear-gradient(160deg,var(--tw-chrome-300),var(--tw-chrome-700) 45%,var(--tw-chrome-200)) border-box;}
+  .hgroup-head{padding:15px 18px 12px;border-bottom:1px solid var(--tw-ink-500)}
+  .hrow{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;background:transparent;border:none;border-bottom:1px solid var(--tw-ink-500);padding:13px 18px;cursor:pointer;text-align:left;text-decoration:none;font-family:inherit}
+  .hrow:last-child{border-bottom:none}
+  .hrow:hover{background:var(--tw-ink-600)}
+  .hlot{font-family:var(--font-mono);font-size:13px;font-weight:500;color:var(--tw-chrome-100);word-break:break-all}
+  .hdate{font-size:12px;color:var(--tw-chrome-500);margin-top:2px}
+  .hgo{flex:none;display:flex;align-items:center;gap:8px}
+  .hgo svg{width:15px;height:15px;fill:var(--tw-chrome-500)}
+  .tag-current{flex:none;background:var(--tw-ink-800);border:1px solid var(--tw-ink-500);color:var(--tw-verified);font-family:var(--font-display);font-weight:500;font-size:10.5px;letter-spacing:.14em;padding:4px 10px;border-radius:var(--radius-sm);text-transform:uppercase}
+  /* ---- wave divider ---- */
+  .wave-divider{width:100%;max-width:640px;margin:8px auto 24px;height:20px}
+  .wave-divider svg{width:100%;height:100%;display:block}
+  /* ---- modal (demo-mode sample COA) ---- */
+  .overlay{position:fixed;inset:0;background:rgba(5,7,12,.72);z-index:50;display:flex;align-items:flex-start;justify-content:center;padding:22px 10px;overflow-y:auto;backdrop-filter:blur(3px)}
+  .doc{background:#f4f6f9;width:100%;max-width:680px;border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--tw-shadow-lg);margin:auto 0;position:relative}
+  .doc-close{position:sticky;top:0;z-index:5;display:flex;justify-content:space-between;align-items:center;background:var(--tw-ink-900);color:var(--tw-chrome-100);padding:11px 16px;font-size:13px;gap:10px;border-bottom:1px solid var(--tw-ink-500)}
+  .doc-close b{font-weight:500;letter-spacing:.02em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .doc-close button{background:transparent;border:1px solid var(--tw-ink-500);color:var(--tw-chrome-200);border-radius:var(--radius-sm);padding:5px 13px;font-size:13px;cursor:pointer;flex:none}
+  .doc-close button:hover{border-color:var(--tw-blue-500);color:var(--tw-blue-300)}
+  .demo-strip{background:#fff4d6;color:#7a5c00;font-size:11.5px;text-align:center;padding:6px 12px;border-bottom:1px solid #ecd98c}
+  .doc-body{padding:22px 24px 26px;background:#f4f6f9;color:#16233b}
+  .lab-head{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:2px solid #d7dee9;padding-bottom:12px;margin-bottom:14px}
+  .lab-logo{font-size:19px;font-weight:800;color:#2e7d32;line-height:1.1}
+  .lab-logo small{display:block;font-size:10.5px;font-weight:500;color:#5d6b82;margin-top:4px;line-height:1.5}
+  .lab-title{font-size:20px;font-weight:800;color:#16233b;text-align:right}
+  .coa-prod{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:4px}
+  .coa-prod h2{font-size:18px;color:#16233b}
+  .coa-prod .testfor{font-size:12px;color:#5d6b82;margin-top:2px}
+  .pass-pill{flex:none;background:var(--tw-verified);color:#fff;font-weight:800;font-size:13px;letter-spacing:.12em;padding:7px 22px;border-radius:8px}
+  .coa-grid{display:grid;grid-template-columns:1fr 1fr;gap:3px 20px;font-size:12.5px;margin:12px 0 16px}
+  .coa-grid div{display:flex;gap:6px}
+  .coa-grid span{color:#5d6b82;min-width:96px}
+  .coa-grid b{color:#16233b;font-weight:600}
+  .id-bar{border:2px solid var(--tw-ink-900);border-radius:12px;padding:10px 16px;display:flex;justify-content:space-between;align-items:center;background:#eef3fb;margin-bottom:16px}
+  .id-bar .lbl{font-size:10.5px;color:#5d6b82}
+  .id-bar .val{font-size:15px;font-weight:700}
+  .id-bar .pur{font-size:21px;font-weight:800;color:#16233b}
+  table.results{width:100%;border-collapse:collapse;font-size:12.5px;margin-bottom:16px}
+  table.results th{background:var(--tw-ink-900);color:#fff;text-align:left;padding:8px 10px;font-weight:600}
+  table.results td{padding:8px 10px;border-bottom:1px solid #e3e9f2}
+  table.results tr:nth-child(even) td{background:#f6f8fc}
+  td.ok{color:var(--tw-verified);font-weight:700}
+  tr.sub td{font-style:italic;color:#5d6b82}
+  .coa-notes{font-size:11px;color:#5d6b82;line-height:1.7;border-top:1px solid #e3e9f2;padding-top:10px;margin-bottom:14px}
+  .coa-notes b{color:#16233b}
+  .coa-foot{display:flex;justify-content:space-between;align-items:flex-end;gap:14px;font-size:11.5px;border-top:2px solid #d7dee9;padding-top:12px}
+  .sig .name{font-weight:700;font-size:13px;color:#16233b}
+  .sig .role{color:#5d6b82}
+  .vrf div{margin-bottom:2px;color:#5d6b82}
+  .vrf b{color:#16233b}
+  .vrf a{color:var(--tw-blue-600);text-decoration:none;word-break:break-all}
+  @media (max-width:480px){.coa-grid{grid-template-columns:1fr}.lab-title{font-size:16px}.doc-body{padding:16px}}
+</style>
+</head>
+<body>
+<div class="navbar">
+  <div class="brand">TIDE<span>lwave</span> RESEARCH</div>
+</div>
+<header>
+  <div class="page-head">
+    <h1 class="page-title">Certificates of Analysis</h1>
+    <div class="tagline">Third-Party Lab Verified</div>
+    <div class="verify">
+      <svg viewBox="0 0 24 24"><path d="M12 1 3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-1.4 16-4-4 1.4-1.4 2.6 2.6 5.8-5.8L17.8 9.8 10.6 17z"/></svg>
+      Independently tested by ILS Laboratories (ISO/IEC 17025)
+    </div>
+  </div>
+  <div class="tide-band" aria-hidden="true">
+    <svg viewBox="0 0 1200 40" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="tideGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" style="stop-color:var(--tw-blue-600)"/>
+          <stop offset="1" style="stop-color:var(--tw-blue-800)"/>
+        </linearGradient>
+      </defs>
+      <path d="M0,20 C100,4 200,36 300,20 C400,4 500,36 600,20 C700,4 800,36 900,20 C1000,4 1100,36 1200,20 L1200,40 L0,40 Z" fill="url(#tideGrad)"/>
+    </svg>
+  </div>
+</header>
+<main>
+  <div class="search">
+    <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 1 0-.7.7l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0A4.5 4.5 0 1 1 14 9.5 4.5 4.5 0 0 1 9.5 14z"/></svg>
+    <input id="q" type="text" placeholder="Search your peptide…" oninput="filter()">
+  </div>
+  <div class="tabs">
+    <button id="tabCurrent" class="tab active" onclick="setTab('current')">Current COAs</button>
+    <button id="tabHistory" class="tab" onclick="setTab('history')">COA History</button>
+  </div>
+  <div id="hint" class="hint">Tap your product to view its full lab report</div>
+  <div id="demoNote" class="demo-note none">Demo mode — showing sample certificates. The live site loads current COAs automatically.</div>
+  <div id="loading" class="loading"><span class="spinner"></span>Loading current lab reports…</div>
+  <div id="list"></div>
+  <div id="historyList" class="none"></div>
+  <div id="empty" class="empty none">No products match that search.</div>
+</main>
+<div class="wave-divider" aria-hidden="true">
+  <svg viewBox="0 0 1200 24" preserveAspectRatio="none">
+    <defs>
+      <linearGradient id="waveFade" x1="0" x2="1" y1="0" y2="0">
+        <stop offset="0" style="stop-color:var(--tw-blue-500);stop-opacity:0"/>
+        <stop offset="0.15" style="stop-color:var(--tw-blue-500);stop-opacity:1"/>
+        <stop offset="0.85" style="stop-color:var(--tw-blue-500);stop-opacity:1"/>
+        <stop offset="1" style="stop-color:var(--tw-blue-500);stop-opacity:0"/>
+      </linearGradient>
+    </defs>
+    <path d="M0,12 C150,2 300,22 450,12 C600,2 750,22 900,12 C1050,2 1150,18 1200,12" fill="none" stroke="url(#waveFade)" stroke-width="2"/>
+  </svg>
+</div>
+<footer>
+  All products tested by <a href="https://ils-lab.com" target="_blank" rel="noopener">ILS Laboratories</a>, San Diego, CA — ISO/IEC 17025 accredited.<br>
+  Each COA includes a lab access code verifiable directly at ils-lab.com.<br>
+  For research purposes only. Not for human consumption.
+</footer>
+
+<div id="coaOverlay" class="overlay none" onclick="if(event.target===this)closeModal('coaOverlay')">
+  <div class="doc">
+    <div class="doc-close"><b id="docTitle">Certificate of Analysis</b><button onclick="closeModal('coaOverlay')">Close ✕</button></div>
+    <div class="demo-strip">SAMPLE PREVIEW — for demo purposes. On the live site this button opens the official ILS Laboratories PDF.</div>
+    <div class="doc-body" id="docBody"></div>
+  </div>
+</div>
+
+<script src="config.js"></script>
+<script>
+/* FOLDER_ID and API_KEY come from config.js (shared with viewer.html) —
+   see that file for what they mean and how demo mode activates.
+   File naming convention: "Product Name - Lot Number.pdf"
+   "Current COAs" shows the latest file per product (by Drive modified time);
+   "COA History" lists every lot per product, newest first. */
+
+/* ---------- sample data (demo fallback) ---------- */
+var SAMPLES = [
+  {key:"glow70", product:"Glow70", dose:"GHK-Cu · TB-500 · BPC-157 blend", lot:"20260424-BBG70-1CF1", date:"07/16/2026", purity:"99.79%"},
+  {key:"cjc", product:"CJC-1295 + Ipamorelin (No DAC)", dose:"5mg / 5mg", lot:"20260503-CP10-2AF1", date:"07/16/2026", purity:"98.38%"},
+  {key:"semax", product:"Semax", dose:"10mg", lot:"20260507-XA10-2CF1", date:"07/13/2026", purity:"99.68%"},
+  {key:"selank", product:"Selank", dose:"10mg", lot:"20260504-SK10-1AF3", date:"07/13/2026", purity:"99.13%"},
+  {key:"tesa", product:"Tesamorelin / Ipamorelin", dose:"5mg / 5mg", lot:"20260420-TI10-3CF1", date:"07/16/2026", purity:"99.71%"}
+];
+
+/* Demo fixture for the new-tab viewer path. Shaped like a real Drive-backed
+   item (has fileId, no dose/purity) so cardHTML renders it exactly the way
+   a live "LAB TESTED" card renders — it's the only thing in demo mode that
+   actually opens viewer.html in a new tab, which is otherwise a code path
+   demo mode never touches. Current-COAs tab only; deliberately absent from
+   SAMPLE_HISTORY/COAS since it isn't a real product. */
+var DEMO_VIEWER_FIXTURE = {
+  product:"New-Tab Viewer (Demo)", dose:"Exercises the viewer.html?id=DEMO path — not a real product",
+  lot:"DEMO-0001", date:"—", fileId:"DEMO"
+};
+
+/* older demo lots shown on the COA History tab (newest lot comes from SAMPLES) */
+var SAMPLE_HISTORY = {
+  semax: [
+    {key:"semax_h1", lot:"20260212-XA10-1BF2", date:"04/21/2026"},
+    {key:"semax_h2", lot:"20251103-XA10-3AF1", date:"01/12/2026"}
+  ],
+  glow70: [
+    {key:"glow70_h1", lot:"20260118-BBG70-2AF3", date:"03/30/2026"}
+  ]
+};
+
+var COAS = {
+  glow70: {
+    name:"Glow70", coa:"COA-2026-953989", lot:"20260424-BBG70-1CF1", labeled:null,
+    analysis:"07/16/2026", received:"06/29/2026", method:"Blend Purity & Quant (HPLC)",
+    identity:"Glow70", purity:"99.79%",
+    rows:[
+      ["Peptide Purity (HPLC)",">= 95.0%","99.79%","%","PASS"],
+      ["Identity (HPLC-RTM)","GHK Cu; TB-500; BPC-157","Confirmed","-","PASS"]
+    ],
+    access:"PBCWUPKL", verify:"portal.ils-lab.com/verify/_ei5V4Luawk6hqkY", issued:"7/16/2026"
+  },
+  cjc: {
+    name:"CJC-1295 5mg + Ipamorelin 5mg no DAC - 5mg/5mg", coa:"COA-2026-953999", lot:"20260503-CP10-2AF1", labeled:"5mg/5mg",
+    analysis:"07/16/2026", received:"06/29/2026", method:"Purity & Quant (HPLC)",
+    identity:"CJC-1295 5mg + Ipamorelin 5mg no DAC", purity:"98.38%",
+    rows:[
+      ["Peptide Purity (HPLC)",">= 95.0%","98.38%","%","PASS"],
+      ["Net Blend Peptide Content","Report Only","10.26","mg","N/A"],
+      ["-- CJC-1295","","5.03","mg",""],
+      ["-- Ipamorelin","","5.23","mg",""],
+      ["Identity (HPLC-RTM)","CJC-1295 + IPAMORELIN","Confirmed","-","PASS"]
+    ],
+    access:"Q4PLYXYS", verify:"portal.ils-lab.com/verify/6POx_WtrgWuJbbNH", issued:"7/16/2026"
+  },
+  semax: {
+    name:"Semax - 10mg", coa:"COA-2026-UDF8TS", lot:"20260507-XA10-2CF1", labeled:"10mg",
+    analysis:"07/13/2026", received:"06/29/2026", method:"Purity & Quant (HPLC)",
+    identity:"Semax", purity:"99.68%",
+    rows:[
+      ["Peptide Purity (HPLC)",">= 95.0%","99.68%","%","PASS"],
+      ["Net Peptide Content","Report Only","10.31","mg","N/A"],
+      ["Identity (HPLC-RTM)","Semax","Confirmed","-","PASS"],
+      ["Fentanyl Screen","Immunoassay, 50 ng/mL cutoff","Not Detected","-","PASS"]
+    ],
+    access:"P6GBEJES", verify:"lab.ils-lab.com", issued:"7/13/2026"
+  },
+  selank: {
+    name:"Selank - 10", coa:"COA-2026-ACWBDM", lot:"20260504-SK10-1AF3", labeled:"10",
+    analysis:"07/13/2026", received:"06/29/2026", method:"Purity & Quant (HPLC)",
+    identity:"Selank", purity:"99.13%",
+    rows:[
+      ["Peptide Purity (HPLC)",">= 95.0%","99.13%","%","PASS"],
+      ["Net Peptide Content","Report Only","10.3","mg","N/A"],
+      ["Identity (HPLC-RTM)","Selank","Confirmed","-","PASS"],
+      ["Fentanyl Screen","Immunoassay, 50 ng/mL cutoff","Not Detected","-","PASS"]
+    ],
+    access:"NEA8QLK2", verify:"lab.ils-lab.com", issued:"7/13/2026"
+  },
+  tesa: {
+    name:"Tesamorelin / Ipamorelin - 5mg/5mg", coa:"COA-2026-954004", lot:"20260420-TI10-3CF1", labeled:"5mg/5mg",
+    analysis:"07/16/2026", received:"06/29/2026", method:"Purity & Quant (HPLC)",
+    identity:"Tesamorelin / Ipamorelin", purity:"99.71%",
+    rows:[
+      ["Peptide Purity (HPLC)",">= 95.0%","99.71%","%","PASS"],
+      ["Net Blend Peptide Content","Report Only","10.71","mg","N/A"],
+      ["-- Tesamorelin","","8.35","mg",""],
+      ["-- Ipamorelin","","2.46","mg",""],
+      ["Identity (HPLC-RTM)","TESAMORELIN + IPAMORELIN","Confirmed","-","PASS"]
+    ],
+    access:"UU8R9UYV", verify:"portal.ils-lab.com/verify/K8y9zsCp66hQnlUh", issued:"7/16/2026"
+  },
+  /* ---- older demo lots (COA History tab) ---- */
+  semax_h1: {
+    name:"Semax - 10mg", coa:"COA-2026-KD2M7Q", lot:"20260212-XA10-1BF2", labeled:"10mg",
+    analysis:"04/21/2026", received:"04/06/2026", method:"Purity & Quant (HPLC)",
+    identity:"Semax", purity:"99.41%",
+    rows:[
+      ["Peptide Purity (HPLC)",">= 95.0%","99.41%","%","PASS"],
+      ["Net Peptide Content","Report Only","10.18","mg","N/A"],
+      ["Identity (HPLC-RTM)","Semax","Confirmed","-","PASS"],
+      ["Fentanyl Screen","Immunoassay, 50 ng/mL cutoff","Not Detected","-","PASS"]
+    ],
+    access:"H3TWQ8RA", verify:"lab.ils-lab.com", issued:"4/21/2026"
+  },
+  semax_h2: {
+    name:"Semax - 10mg", coa:"COA-2026-VN51XC", lot:"20251103-XA10-3AF1", labeled:"10mg",
+    analysis:"01/12/2026", received:"12/29/2025", method:"Purity & Quant (HPLC)",
+    identity:"Semax", purity:"99.02%",
+    rows:[
+      ["Peptide Purity (HPLC)",">= 95.0%","99.02%","%","PASS"],
+      ["Net Peptide Content","Report Only","10.24","mg","N/A"],
+      ["Identity (HPLC-RTM)","Semax","Confirmed","-","PASS"],
+      ["Fentanyl Screen","Immunoassay, 50 ng/mL cutoff","Not Detected","-","PASS"]
+    ],
+    access:"M9RDP2WU", verify:"lab.ils-lab.com", issued:"1/12/2026"
+  },
+  glow70_h1: {
+    name:"Glow70", coa:"COA-2026-948112", lot:"20260118-BBG70-2AF3", labeled:null,
+    analysis:"03/30/2026", received:"03/16/2026", method:"Blend Purity & Quant (HPLC)",
+    identity:"Glow70", purity:"99.55%",
+    rows:[
+      ["Peptide Purity (HPLC)",">= 95.0%","99.55%","%","PASS"],
+      ["Identity (HPLC-RTM)","GHK Cu; TB-500; BPC-157","Confirmed","-","PASS"]
+    ],
+    access:"T2KJXH6B", verify:"portal.ils-lab.com/verify/mQ3rTa8wLp2xVcNd", issued:"3/30/2026"
+  }
+};
+
+function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;")}
+
+/* ---------- Drive listing: group by product, keep newest per product ---------- */
+function parseName(fileName){
+  var base = fileName.replace(/\.pdf$/i,"");
+  var i = base.indexOf(" - ");
+  if(i > 0) return {product: base.slice(0,i).trim(), lot: base.slice(i+3).trim()};
+  return {product: base.trim(), lot: null};   /* malformed name: still shown as its own card */
+}
+
+function latestPerProduct(files){
+  var byProduct = {};
+  files.forEach(function(f){
+    var p = parseName(f.name);
+    var key = p.product.toLowerCase();
+    var t = new Date(f.modifiedTime || f.createdTime || 0).getTime();
+    if(!byProduct[key] || t > byProduct[key].t){
+      byProduct[key] = {t:t, product:p.product, lot:p.lot, fileId:f.id,
+                        date:new Date(f.modifiedTime || f.createdTime).toLocaleDateString("en-US")};
+    }
+  });
+  return Object.keys(byProduct).map(function(k){return byProduct[k]})
+        .sort(function(a,b){return a.product.localeCompare(b.product)});
+}
+
+function loadLive(){
+  var url = "https://www.googleapis.com/drive/v3/files"
+    + "?q=" + encodeURIComponent("'"+FOLDER_ID+"' in parents and trashed=false and mimeType='application/pdf'")
+    + "&fields=" + encodeURIComponent("files(id,name,modifiedTime,createdTime)")
+    + "&pageSize=1000&key=" + API_KEY;
+  return fetch(url).then(function(r){
+    if(!r.ok) throw new Error("Drive API " + r.status);
+    return r.json();
+  }).then(function(j){
+    if(!j.files || !j.files.length) throw new Error("empty");
+    return j.files;
+  });
+}
+
+/* ---------- Drive listing: all lots grouped by product, newest first ---------- */
+function historyGroups(files){
+  var byProduct = {};
+  files.forEach(function(f){
+    var p = parseName(f.name);
+    var key = p.product.toLowerCase();
+    if(!byProduct[key]) byProduct[key] = {product:p.product, entries:[]};
+    byProduct[key].entries.push({
+      lot:p.lot, fileId:f.id,
+      t:new Date(f.modifiedTime || f.createdTime || 0).getTime(),
+      date:new Date(f.modifiedTime || f.createdTime).toLocaleDateString("en-US")
+    });
+  });
+  return Object.keys(byProduct).map(function(k){
+    byProduct[k].entries.sort(function(a,b){return b.t - a.t});
+    return byProduct[k];
+  }).sort(function(a,b){return a.product.localeCompare(b.product)});
+}
+
+/* demo-mode history: newest lot from SAMPLES + older lots from SAMPLE_HISTORY */
+function demoHistoryGroups(){
+  return SAMPLES.map(function(s){
+    var entries = [{key:s.key, lot:s.lot, date:s.date}].concat(SAMPLE_HISTORY[s.key] || []);
+    return {product:s.product, entries:entries};
+  });
+}
+
+/* ---------- rendering ---------- */
+var CHECK = '<svg viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg>';
+var DOCICON = '<svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm4 18H6V4h7v5h5v11z"/></svg>';
+
+function cardHTML(item){
+  var live = !!item.fileId;
+  var badge = live
+    ? '<div class="badge blue">'+CHECK+'LAB TESTED</div>'
+    : '<div class="badge">'+CHECK+'PASS</div>';
+  var metaRows = live
+    ? (item.lot?'<div>Lot <b>'+esc(item.lot)+'</b></div>':'<div>Document <b>COA on file</b></div>')
+      + '<div>COA updated <b>'+esc(item.date)+'</b></div>'
+    : '<div class="purity">Peptide Purity <b>'+esc(item.purity)+'</b></div>'
+      + '<div>Lot <b>'+esc(item.lot)+'</b></div><div>Analysis Date <b>'+esc(item.date)+'</b></div>';
+  var actionHTML = live
+    ? '<a class="btn" href="viewer.html?id='+encodeURIComponent(item.fileId)+'" target="_blank" rel="noopener">'+DOCICON+'View COA (PDF)</a>'
+    : '<a class="btn" href="javascript:void(0)" onclick="showCOA(\''+item.key+'\')">'+DOCICON+'View Certificate of Analysis</a>';
+  return '<div class="card" data-name="'+esc((item.product+" "+(item.dose||"")+" "+(item.lot||"")).toLowerCase())+'">'
+    + '<div class="card-top"><div><div class="pname">'+esc(item.product)+'</div>'
+    + (item.dose?'<div class="pdose">'+esc(item.dose)+'</div>':'')
+    + '</div>'+badge+'</div>'
+    + '<div class="meta">'+metaRows+'</div>'
+    + actionHTML
+    + '</div>';
+}
+
+function render(items, demo){
+  document.getElementById("loading").classList.add("none");
+  document.getElementById("demoNote").classList.toggle("none", !demo);
+  document.getElementById("list").innerHTML = items.map(cardHTML).join("");
+}
+
+var CHEV = '<svg viewBox="0 0 24 24"><path d="M8.6 16.6 13.2 12 8.6 7.4 10 6l6 6-6 6z"/></svg>';
+
+function historyRowHTML(e, product, isCurrent){
+  var dataName = esc((product+" "+(e.lot||"")).toLowerCase());
+  var inner = '<div><div class="hlot">'+(e.lot?'Lot '+esc(e.lot):'COA on file')+'</div>'
+    + '<div class="hdate">COA dated '+esc(e.date)+'</div></div>'
+    + '<div class="hgo">'+(isCurrent?'<span class="tag-current">CURRENT</span>':'')+CHEV+'</div>';
+  return e.fileId
+    ? '<a class="hrow" data-name="'+dataName+'" href="viewer.html?id='+encodeURIComponent(e.fileId)+'" target="_blank" rel="noopener">'+inner+'</a>'
+    : '<button class="hrow" data-name="'+dataName+'" onclick="showCOA(\''+e.key+'\')">'+inner+'</button>';
+}
+
+function renderHistory(groups, demo){
+  document.getElementById("historyList").innerHTML = groups.map(function(g){
+    return '<div class="hgroup" data-name="'+esc(g.product.toLowerCase())+'">'
+      + '<div class="hgroup-head"><div class="pname">'+esc(g.product)+'</div>'
+      + '<div class="pdose">'+g.entries.length+(g.entries.length===1?' lot on file':' lots on file')+'</div></div>'
+      + g.entries.map(function(e,i){return historyRowHTML(e, g.product, i===0)}).join("")
+      + '</div>';
+  }).join("");
+}
+
+var TAB = "current";
+function setTab(t){
+  TAB = t;
+  document.getElementById("tabCurrent").classList.toggle("active", t==="current");
+  document.getElementById("tabHistory").classList.toggle("active", t==="history");
+  document.getElementById("list").classList.toggle("none", t!=="current");
+  document.getElementById("historyList").classList.toggle("none", t!=="history");
+  document.getElementById("hint").textContent = t==="current"
+    ? "Tap your product to view its full lab report"
+    : "Find the lot number printed on your vial to view its lab report";
+  filter();
+}
+
+function renderDemo(){
+  render(SAMPLES.concat([DEMO_VIEWER_FIXTURE]), true);
+  renderHistory(demoHistoryGroups(), true);
+}
+
+function init(){
+  if(API_KEY === "PASTE_API_KEY_HERE"){ renderDemo(); return; }
+  loadLive().then(function(files){
+    render(latestPerProduct(files), false);
+    renderHistory(historyGroups(files), false);
+  }).catch(function(){ renderDemo(); });   /* API unreachable: demo fallback */
+}
+
+/* ---------- sample COA modal ---------- */
+function showCOA(key){
+  var c = COAS[key]; if(!c) return;
+  var rowsHtml = c.rows.map(function(r){
+    var sub = r[0].indexOf("--")===0;
+    var status = r[4]==="PASS" ? '<td class="ok">PASS</td>' : '<td>'+esc(r[4])+'</td>';
+    return '<tr'+(sub?' class="sub"':'')+'><td>'+(sub?'&nbsp;&nbsp;&mdash; '+esc(r[0].replace(/^--\s*/,"")):esc(r[0]))+'</td><td>'+esc(r[1])+'</td><td><b>'+esc(r[2])+'</b></td><td>'+esc(r[3])+'</td>'+status+'</tr>';
+  }).join("");
+  document.getElementById("docBody").innerHTML =
+    '<div class="lab-head">'+
+      '<div class="lab-logo">ILS LABS<small>8222 Vickers St, Suite 106, San Diego, CA 92111<br>(619) 329-3999 &nbsp;|&nbsp; ils-lab.com</small></div>'+
+      '<div class="lab-title">Certificate of Analysis</div>'+
+    '</div>'+
+    '<div class="coa-prod"><div><h2>'+esc(c.name)+'</h2><div class="testfor">Tested for: TIDElwave Research Solutions</div></div><div class="pass-pill">PASS</div></div>'+
+    '<div class="coa-grid">'+
+      '<div><span>COA #:</span><b>'+esc(c.coa)+'</b></div>'+
+      '<div><span>Analysis Date:</span><b>'+esc(c.analysis)+'</b></div>'+
+      '<div><span>Lot Number:</span><b>'+esc(c.lot)+'</b></div>'+
+      '<div><span>Appearance:</span><b>Good</b></div>'+
+      (c.labeled?'<div><span>Labeled Content:</span><b>'+esc(c.labeled)+'</b></div>':'')+
+      '<div><span>Sample Matrix:</span><b>Lyophilized</b></div>'+
+      '<div><span>Date Received:</span><b>'+esc(c.received)+'</b></div>'+
+      '<div><span>Method:</span><b>'+esc(c.method)+'</b></div>'+
+    '</div>'+
+    '<div class="id-bar"><div><div class="lbl">Identity</div><div class="val">'+esc(c.identity)+'</div></div><div style="text-align:right"><div class="lbl">Peptide Purity</div><div class="pur">'+esc(c.purity)+'</div></div></div>'+
+    '<table class="results"><tr><th>Analyte</th><th>Specification</th><th>Result</th><th>Unit</th><th>Status</th></tr>'+rowsHtml+'</table>'+
+    '<div class="coa-notes"><b>Notes &amp; Methodology</b><br>'+
+      '1. Date Tested: '+esc(c.analysis)+'. Methods: '+esc(c.method)+'.<br>'+
+      '2. The sample was confirmed to be '+esc(c.identity)+' by HPLC. Identification by chromatographic retention time comparison with a reference standard.<br>'+
+      '3. Peptide purity determined by RP-HPLC area normalization at 214 nm. Non-peptide process-related impurities, if detected, are excluded from the calculation.'+
+    '</div>'+
+    '<div class="coa-foot">'+
+      '<div class="sig"><div class="name">Dr. Greg Kalyuzhny</div><div class="role">Lab Director &nbsp;·&nbsp; '+esc(c.issued)+'</div></div>'+
+      '<div class="vrf"><div>COA #: <b>'+esc(c.coa)+'</b></div><div>Access Code: <b>'+esc(c.access)+'</b></div><div>Verify: <a href="https://'+esc(c.verify)+'" target="_blank" rel="noopener">'+esc(c.verify)+'</a></div></div>'+
+    '</div>';
+  document.getElementById("docTitle").textContent = c.name;
+  openModal("coaOverlay");
+}
+
+function openModal(id){document.getElementById(id).classList.remove("none");document.body.style.overflow="hidden"}
+function closeModal(id){document.getElementById(id).classList.add("none");document.body.style.overflow=""}
+document.addEventListener("keydown",function(e){if(e.key==="Escape"){closeModal("coaOverlay")}});
+
+function filter(){
+  var q=document.getElementById('q').value.toLowerCase().trim();
+  var cards=document.querySelectorAll('#list .card');var shown=0;
+  cards.forEach(function(c){
+    var hit=!q||c.dataset.name.indexOf(q)>-1||c.textContent.toLowerCase().indexOf(q)>-1;
+    c.classList.toggle('none',!hit);if(hit)shown++;
+  });
+  var groups=document.querySelectorAll('#historyList .hgroup');var hShown=0;
+  groups.forEach(function(g){
+    var product=g.dataset.name;
+    var rows=g.querySelectorAll('.hrow');var rowsShown=0;
+    rows.forEach(function(r){
+      /* a product-name match keeps the whole group; otherwise match lot by lot */
+      var hit=!q||product.indexOf(q)>-1||r.dataset.name.indexOf(q)>-1;
+      r.classList.toggle('none',!hit);if(hit)rowsShown++;
+    });
+    g.classList.toggle('none',rowsShown===0);if(rowsShown)hShown++;
+  });
+  var total=TAB==="current"?cards.length:groups.length;
+  var visible=TAB==="current"?shown:hShown;
+  var box=document.getElementById('empty');
+  /* an older lot typed on the Current tab only matches history: point the customer there */
+  box.innerHTML = (TAB==="current" && q && shown===0 && hShown>0)
+    ? 'No current COA matches that lot. <a href="javascript:void(0)" onclick="setTab(\'history\')">Check COA History &rarr;</a>'
+    : 'No products match that search.';
+  box.classList.toggle('none',total===0||visible>0);
+}
+
+init();
+</script>
+</body>
+</html>
