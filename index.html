@@ -67,9 +67,9 @@
     grid-template-columns:1fr auto;
     grid-template-areas:
       "name purity"
-      "lot  status";
+      "name status";
     column-gap:14px;
-    row-gap:5px;
+    row-gap:6px;
     align-items:center;
     padding:15px 18px;
     width:100%;
@@ -78,8 +78,7 @@
   }
   .row:hover{background:var(--surface-soft)}
   .stack.open > .row{background:var(--surface-soft)}
-  .cell-name{grid-area:name;font:500 16px/1.25 var(--sans);color:var(--ink);min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-  .cell-lot{grid-area:lot;font:400 11.5px/1.2 var(--mono);letter-spacing:.03em;color:var(--mono-mute);min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .cell-name{grid-area:name;align-self:center;font:500 16px/1.25 var(--sans);color:var(--ink);min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
   .cell-purity{grid-area:purity;justify-self:end;font:500 15px/1 var(--mono);font-variant-numeric:tabular-nums;color:var(--ink)}
   .cell-status{grid-area:status;justify-self:end}
   .cell-lab,.cell-date{display:none}
@@ -115,7 +114,7 @@
 
     .register-head{
       display:grid;
-      grid-template-columns:minmax(0,2.1fr) 1.5fr .9fr 1.3fr 1fr 110px;
+      grid-template-columns:minmax(0,2.4fr) 1fr 1.3fr 1fr 110px;
       gap:24px;padding:13px 40px;
       border-bottom:1px solid var(--border);background:var(--surface-soft);
       font:400 9.5px/1 var(--mono);letter-spacing:.14em;color:var(--mono-mute);text-transform:uppercase;
@@ -123,13 +122,12 @@
     .register-head .right{text-align:right}
 
     .row{
-      grid-template-columns:minmax(0,2.1fr) 1.5fr .9fr 1.3fr 1fr 110px;
-      grid-template-areas:"name lot purity lab date status";
+      grid-template-columns:minmax(0,2.4fr) 1fr 1.3fr 1fr 110px;
+      grid-template-areas:"name purity lab date status";
       column-gap:24px;row-gap:0;
       padding:17px 40px;
     }
     .cell-name{font-size:15px;white-space:normal;overflow:visible;text-overflow:clip}
-    .cell-lot{font-size:12.5px;color:var(--ink-2);letter-spacing:0;white-space:normal;overflow:visible;text-overflow:clip;word-break:break-all}
     .cell-purity{justify-self:start;font-size:14px}
     .cell-lab{display:block;font:400 13px/1.3 var(--sans);color:var(--ink-2)}
     .cell-date{display:block;font:400 12.5px/1 var(--mono);color:var(--ink-2)}
@@ -179,7 +177,7 @@
     <div class="search-wrap">
       <div class="search">
         <span class="mag" aria-hidden="true"></span>
-        <input id="q" type="text" placeholder="Peptide name or lot number" oninput="filter()" autocomplete="off" spellcheck="false">
+        <input id="q" type="text" placeholder="Peptide name" oninput="filter()" autocomplete="off" spellcheck="false">
       </div>
     </div>
   </div>
@@ -188,7 +186,6 @@
 <main>
   <div class="register-head none">
     <span>Peptide</span>
-    <span>Lot</span>
     <span>Purity</span>
     <span>Testing lab</span>
     <span>COA date</span>
@@ -234,8 +231,7 @@ function historyItemsHTML(peptide){
 function stackHTML(peptide){
   var b = peptide.batches[0];
   var url = batchUrl(peptide, b);
-  var lots = peptide.batches.map(function(x){return (x.lot||"").toLowerCase()}).join(" ");
-  var blob = (peptide.product+" "+lots+" "+(b.lab||"")).toLowerCase();
+  var blob = (peptide.product+" "+(b.lab||"")).toLowerCase();
 
   /* Mobile expansion: full metadata grid + open COA button + history */
   var mobileGrid =
@@ -258,7 +254,6 @@ function stackHTML(peptide){
   return '<div class="stack" data-name="'+esc(blob)+'" data-slug="'+esc(peptide.slug)+'">'
     + '<button class="row" onclick="toggleStack(this)" aria-expanded="false">'
       + '<span class="cell-name">'+esc(peptide.product)+'</span>'
-      + '<span class="cell-lot">'+esc(b.lot || batchSlug(b.file))+'</span>'
       + '<span class="cell-purity">'+esc(b.purity)+'</span>'
       + '<span class="cell-lab">'+esc(b.lab || "&mdash;")+'</span>'
       + '<span class="cell-date">'+esc(formatDate(b.date))+'</span>'
