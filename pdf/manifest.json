@@ -1,0 +1,70 @@
+[
+  { "slug": "5-amino-1mq",              "product": "5-Amino-1MQ",                     "batches": [] },
+  { "slug": "aod-9604",                 "product": "AOD-9604",                        "batches": [] },
+  { "slug": "ara-290",                  "product": "ARA-290",                         "batches": [] },
+  { "slug": "b12",                      "product": "B12",                             "batches": [] },
+  { "slug": "bpc-157",                  "product": "BPC-157",                         "batches": [] },
+  { "slug": "bpc-157-tb-500",           "product": "BPC-157 / TB-500",                "batches": [] },
+  { "slug": "cagrilintide",             "product": "Cagrilintide",                    "batches": [] },
+  { "slug": "cjc-1295-ipamorelin-no-dac","product": "CJC-1295 + Ipamorelin (No DAC)",
+    "batches": [
+      { "file": "2026-07-16-ils-20260503-cp10-2af1.pdf",
+        "date": "2026-07-16", "purity": "98.38%",
+        "lab": "ILS Labs", "lot": "20260503-CP10-2AF1", "reference": "COA-2026-953999" }
+    ] },
+  { "slug": "dsip",                     "product": "DSIP",                            "batches": [] },
+  { "slug": "epitalon",                 "product": "Epitalon",                        "batches": [] },
+  { "slug": "ghk-cu",                   "product": "GHK-CU",                          "batches": [] },
+  { "slug": "glutathione",              "product": "Glutathione",                     "batches": [] },
+  { "slug": "glow",                     "product": "Glow",
+    "batches": [
+      { "file": "2026-07-16-ils-20260424-bbg70-1cf1.pdf",
+        "date": "2026-07-16", "purity": "99.79%",
+        "lab": "ILS Labs", "lot": "20260424-BBG70-1CF1", "reference": "COA-2026-953989" }
+    ] },
+  { "slug": "ipamorelin",               "product": "Ipamorelin",                      "batches": [] },
+  { "slug": "kisspeptin-10",            "product": "Kisspeptin-10",                   "batches": [] },
+  { "slug": "klow",                     "product": "KLOW",                            "batches": [] },
+  { "slug": "kpv",                      "product": "KPV",                             "batches": [] },
+  { "slug": "mots-c",                   "product": "MOTS-C",                          "batches": [] },
+  { "slug": "nad",                      "product": "NAD+",                            "batches": [] },
+  { "slug": "pinealon",                 "product": "Pinealon",                        "batches": [] },
+  { "slug": "pt-141",                   "product": "PT-141",                          "batches": [] },
+  { "slug": "retatrutide",              "product": "Retatrutide",
+    "batches": [
+      { "file": "2026-08-14-freedom-2608120388.pdf",
+        "date": "2026-08-14", "purity": "99.98%",
+        "lab": "Freedom Diagnostics", "lot": "Pink Cap", "reference": "2608120388" }
+    ] },
+  { "slug": "selank",                   "product": "Selank",
+    "batches": [
+      { "file": "2026-07-13-ils-20260504-sk10-1af3.pdf",
+        "date": "2026-07-13", "purity": "99.13%",
+        "lab": "ILS Labs", "lot": "20260504-SK10-1AF3", "reference": "COA-2026-ACWBDM" }
+    ] },
+  { "slug": "selank-semax",             "product": "Selank / Semax",                  "batches": [] },
+  { "slug": "semax",                    "product": "Semax",
+    "batches": [
+      { "file": "2026-07-13-ils-20260507-xa10-2cf1.pdf",
+        "date": "2026-07-13", "purity": "99.68%",
+        "lab": "ILS Labs", "lot": "20260507-XA10-2CF1", "reference": "COA-2026-UDF8TS" }
+    ] },
+  { "slug": "sermorelin",               "product": "Sermorelin",                      "batches": [] },
+  { "slug": "slu-pp-332",               "product": "SLU-PP-332",                      "batches": [] },
+  { "slug": "ss-31",                    "product": "SS-31",                           "batches": [] },
+  { "slug": "tb-500",                   "product": "TB-500",                          "batches": [] },
+  { "slug": "tesamorelin",              "product": "Tesamorelin",                     "batches": [] },
+  { "slug": "tesamorelin-ipamorelin",   "product": "Tesamorelin / Ipamorelin",
+    "batches": [
+      { "file": "2026-07-16-ils-20260420-ti10-3cf1.pdf",
+        "date": "2026-07-16", "purity": "99.71%",
+        "lab": "ILS Labs", "lot": "20260420-TI10-3CF1", "reference": "COA-2026-954004" }
+    ] },
+  { "slug": "thymosin-alpha-1",         "product": "Thymosin Alpha-1",                "batches": [] },
+  { "slug": "tirzepatide",              "product": "Tirzepatide",
+    "batches": [
+      { "file": "2026-08-14-freedom-2608120389.pdf",
+        "date": "2026-08-14", "purity": "99.93%",
+        "lab": "Freedom Diagnostics", "lot": "Green Cap", "reference": "2608120389" }
+    ] }
+]
