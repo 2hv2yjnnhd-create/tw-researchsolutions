@@ -220,17 +220,15 @@ function renderInfo(peptide, batch){
   document.getElementById("pname").textContent = peptide.product;
   document.getElementById("purityNum").textContent = String(batch.purity).replace(/%$/, "");
 
+  /* lot stays in the manifest as data but is not displayed on the viewer */
   var g = "";
-  if(batch.lot){
-    g += '<div class="span-2"><div class="field-label">Lot on your vial</div><div class="field-value">'+esc(batch.lot)+'</div></div>';
-  }
   g += '<div><div class="field-label">Purity</div><div class="field-value">'+esc(batch.purity)+'</div></div>';
   g += '<div><div class="field-label">COA date</div><div class="field-value">'+esc(formatDate(batch.date))+'</div></div>';
   if(batch.lab){
     g += '<div><div class="field-label">Testing lab</div><div class="field-value sans">'+esc(batch.lab)+'</div></div>';
   }
   if(batch.reference){
-    g += '<div class="span-2"><div class="field-label">Lab reference</div><div class="field-value">'+esc(batch.reference)+'</div></div>';
+    g += '<div><div class="field-label">Lab reference</div><div class="field-value">'+esc(batch.reference)+'</div></div>';
   }
   document.getElementById("dataGrid").innerHTML = g;
 }
