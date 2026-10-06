@@ -111,7 +111,7 @@ Claude can re-read it and stay consistent across sessions.
 3. **Extract these fields per PDF:**
    - **Product / peptide name** → maps to a stack slug in
      `manifest.json`. If a match is ambiguous, ask.
-   - **Lab** → `"ILS Labs"` or `"Freedom Diagnostics"` (or ask for the
+   - **Lab** → `"ILS Labs"`, `"Freedom Diagnostics"` or `"BTLabs"` (or ask for the
      display name if it's a new lab).
    - **COA date** → for ILS use *Analysis Date*, for Freedom use
      *Reported*. Always output ISO `YYYY-MM-DD`.
@@ -133,6 +133,9 @@ Claude can re-read it and stay consistent across sessions.
      turned into hyphens (`20260424-BBG70-1CF1` → `20260424-bbg70-1cf1`).
    - `tail` for Freedom = the Accession # as-is
      (e.g. `2608120389`).
+   - `tail` for BTLabs = lot number lowercased with non-alphanumerics
+     turned into hyphens, same as ILS (`20260501-BB20-1AF2` →
+     `20260501-bb20-1af2`).
 6. **Move the PDF** with `mv` from its source path to
    `pdf/<stack-slug>/<new-filename>.pdf`. Delete the folder's
    `.gitkeep` if present (folder is no longer empty).
@@ -157,4 +160,12 @@ proceeding:
 3. Confirm which date field to use (Analysis Date / Reported /
    Issued / etc.).
 4. Update this section with the mapping so future sessions have it.
+
+### Known labs
+
+| lab display name | lab-short | date field | reference field |
+|---|---|---|---|
+| ILS Labs | `ils` | Analysis Date | COA # |
+| Freedom Diagnostics | `freedom` | Reported | Accession # |
+| BTLabs (btlabtesting.com) | `btl` | Date (report date, not Date Tested) | Report # (e.g. `COA261640-007`) |
 
