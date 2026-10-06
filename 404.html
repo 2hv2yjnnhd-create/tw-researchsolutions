@@ -73,6 +73,8 @@
 
   .data-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px 16px;margin-top:14px;padding-top:14px;border-top:1px solid var(--border)}
   .data-grid .span-2{grid-column:1/-1}
+  .vial-line + .vial-line{margin-top:4px}
+  .vial-dose{display:inline-block;min-width:5.5em;color:var(--mono-mute)}
   .field-label{font:400 9.5px/1 var(--mono);letter-spacing:.14em;color:var(--mono-mute);text-transform:uppercase}
   .field-value{margin-top:5px;font:500 13px/1.35 var(--mono);color:var(--ink);word-break:break-all}
   .field-value.sans{font-family:var(--sans);font-weight:400}
@@ -216,12 +218,26 @@ function showNotFound(msg){
   document.getElementById("notfound").classList.add("on");
 }
 
+/* Batch numbers printed on the vial labels, one per dose (manifest "vials"). */
+function vialsHTML(peptide){
+  var v = peptide.vials || [];
+  if(!v.length) return "";
+  return v.map(function(x){
+    return '<div class="vial-line">'+(v.length>1?'<span class="vial-dose">'+esc(x.dose)+'</span> ':'')+esc(x.batch)+'</div>';
+  }).join("");
+}
+
 function renderInfo(peptide, batch){
   document.getElementById("pname").textContent = peptide.product;
   document.getElementById("purityNum").textContent = String(batch.purity).replace(/%$/, "");
 
-  /* lot stays in the manifest as data but is not displayed on the viewer */
+  /* The lab's own lot stays in the manifest as data but is not displayed.
+     What customers see is the batch printed on their vial label. */
   var g = "";
+  var vials = vialsHTML(peptide);
+  if(vials && peptide.batches[0].file === batch.file){
+    g += '<div class="span-2"><div class="field-label">Batch on your vial</div><div class="field-value">'+vials+'</div></div>';
+  }
   g += '<div><div class="field-label">Purity</div><div class="field-value">'+esc(batch.purity)+'</div></div>';
   g += '<div><div class="field-label">COA date</div><div class="field-value">'+esc(formatDate(batch.date))+'</div></div>';
   if(batch.lab){
@@ -264,7 +280,7 @@ function renderWarn(peptide, batch){
   var current = peptide.batches[0];
   document.getElementById("warnText").textContent =
     "You are viewing a superseded batch. The current batch for " + peptide.product +
-    " is lot " + (current.lot || batchSlug(current.file)) + ", dated " + formatDate(current.date) + ".";
+    " is dated " + formatDate(current.date) + ".";
   document.getElementById("warnCta").setAttribute("href", batchUrl(peptide, current));
   if(passLabel){ passLabel.classList.add("pass-label-archived"); passLabel.classList.remove("pass-label-verified"); }
 }
@@ -321,7 +337,7 @@ function init(){
       if(!batch){ showNotFound("No batch “"+batchSlugStr+"” on file for "+peptide.product+"."); return; }
 
       var pdfUrl = "/pdf/" + encodeURIComponent(peptide.slug) + "/" + encodeURIComponent(batch.file);
-      document.title = peptide.product + " · Lot " + (batch.lot || batchSlug(batch.file)) + " — TIDElwave";
+      document.title = peptide.product + " · COA " + formatDate(batch.date) + " — TIDElwave";
       document.getElementById("downloadLink").setAttribute("href", pdfUrl);
       renderInfo(peptide, batch);
       renderChips(peptide, batch);

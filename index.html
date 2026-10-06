@@ -91,6 +91,8 @@
   .stack.open > .expand{display:block}
   .data-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px 16px;padding:14px 0 0;border-top:1px solid var(--border)}
   .data-grid .span-2{grid-column:1/-1}
+  .vial-line + .vial-line{margin-top:4px}
+  .vial-dose{display:inline-block;min-width:5.5em;color:var(--mono-mute)}
   .field-label{font:400 9.5px/1 var(--mono);letter-spacing:.14em;color:var(--mono-mute);text-transform:uppercase}
   .field-value{margin-top:5px;font:500 13px/1.35 var(--mono);color:var(--ink);word-break:break-all}
   .field-value.sans{font-family:var(--sans);font-weight:400}
@@ -177,7 +179,7 @@
     <div class="search-wrap">
       <div class="search">
         <span class="mag" aria-hidden="true"></span>
-        <input id="q" type="text" placeholder="Peptide name" oninput="filter()" autocomplete="off" spellcheck="false">
+        <input id="q" type="text" placeholder="Peptide name or batch #" oninput="filter()" autocomplete="off" spellcheck="false">
       </div>
     </div>
   </div>
@@ -203,7 +205,7 @@
    batches[] array, newest first. Rows are one per stack that has a
    COA; empty stacks are hidden. Row tap expands in place with the
    full metadata + open-COA button + older-batch history. Search
-   filters by peptide name or lot without auto-expanding matches. */
+   filters by peptide name or vial batch # without auto-expanding matches. */
 
 function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;")}
 function batchSlug(file){return String(file).replace(/\.pdf$/i,"")}
@@ -215,12 +217,21 @@ function formatDate(iso){
   return m ? (m[1]+"-"+m[2]+"-"+m[3]) : String(iso);
 }
 
+/* Batch numbers printed on the vial labels, one per dose (manifest "vials"). */
+function vialsHTML(peptide){
+  var v = peptide.vials || [];
+  if(!v.length) return "";
+  return v.map(function(x){
+    return '<div class="vial-line">'+(v.length>1?'<span class="vial-dose">'+esc(x.dose)+'</span> ':'')+esc(x.batch)+'</div>';
+  }).join("");
+}
+
 function historyItemsHTML(peptide){
   if(peptide.batches.length < 2) return "";
   var older = peptide.batches.slice(1);
   var items = older.map(function(b){
-    return '<a class="h-item" href="'+batchUrl(peptide,b)+'" target="_blank" rel="noopener" data-lot="'+esc((b.lot||"").toLowerCase())+'">'
-      + '<span class="h-item-lot"><span class="h-lot-date">'+esc(formatDate(b.date))+'</span> &middot; '+esc(b.lot || batchSlug(b.file))+'</span>'
+    return '<a class="h-item" href="'+batchUrl(peptide,b)+'" target="_blank" rel="noopener"">'
+      + '<span class="h-item-lot"><span class="h-lot-date">'+esc(formatDate(b.date))+'</span>'+(b.lab?' &middot; '+esc(b.lab):'')+'</span>'
       + '<span class="h-item-purity">'+esc(b.purity)+'</span>'
       + '<span class="h-item-pdf">PASS &middot; PDF &#8599;</span>'
     + '</a>';
@@ -231,12 +242,13 @@ function historyItemsHTML(peptide){
 function stackHTML(peptide){
   var b = peptide.batches[0];
   var url = batchUrl(peptide, b);
-  var blob = (peptide.product+" "+(b.lab||"")).toLowerCase();
+  var blob = (peptide.product+" "+(b.lab||"")+" "+(peptide.vials||[]).map(function(v){return v.batch}).join(" ")).toLowerCase();
+  var vials = vialsHTML(peptide);
 
   /* Mobile expansion: full metadata grid + open COA button + history */
   var mobileGrid =
       '<div class="data-grid">'
-        + (b.lot?'<div class="span-2"><div class="field-label">Lot on your vial</div><div class="field-value">'+esc(b.lot)+'</div></div>':'')
+        + (vials?'<div class="span-2"><div class="field-label">Batch on your vial</div><div class="field-value">'+vials+'</div></div>':'')
         + '<div><div class="field-label">COA date</div><div class="field-value">'+esc(formatDate(b.date))+'</div></div>'
         + '<div><div class="field-label">Purity</div><div class="field-value">'+esc(b.purity)+'</div></div>'
         + (b.lab?'<div><div class="field-label">Testing lab</div><div class="field-value sans">'+esc(b.lab)+'</div></div>':'')
@@ -247,7 +259,8 @@ function stackHTML(peptide){
   /* Desktop expansion: two-column panel (history + reference/button on right) */
   var desktopSide =
       '<div class="side">'
-        + (b.reference?'<div class="side-label">Lab reference</div><div class="side-value">'+esc(b.reference)+'</div>':'')
+        + (vials?'<div class="side-label">Batch on your vial</div><div class="side-value">'+vials+'</div>':'')
+        + (b.reference?'<div class="side-label" style="margin-top:16px">Lab reference</div><div class="side-value">'+esc(b.reference)+'</div>':'')
         + '<a class="open-coa" href="'+url+'" target="_blank" rel="noopener">Open full COA &rarr;</a>'
       + '</div>';
 

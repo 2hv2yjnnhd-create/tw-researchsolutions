@@ -1,187 +1,296 @@
 [
-  { "slug": "5-amino-1mq",             "product": "5-Amino-1MQ",
+  { "slug": "5-amino-1mq",            "product": "5-Amino-1MQ",
+    "vials": [
+      { "dose": "50MG", "batch": "20260429-50AM-1BF3" }
+    ],
     "batches": [
       { "file": "2026-09-25-btl-20260429-50am-1bf3s.pdf",
         "date": "2026-09-25", "purity": "99.9%",
         "lab": "BTLabs", "lot": "20260429-50AM-1BF3S", "reference": "COA261640-021" }
     ] },
-  { "slug": "aod-9604",                "product": "AOD-9604",
+  { "slug": "aod-9604",               "product": "AOD-9604",
+    "vials": [
+      { "dose": "5MG", "batch": "20260110-5AD-1AF4" }
+    ],
     "batches": [
       { "file": "2026-09-25-btl-20260110-5ad-1af4.pdf",
         "date": "2026-09-25", "purity": "99.5%",
         "lab": "BTLabs", "lot": "20260110-5AD-1AF4", "reference": "COA261640-018" }
     ] },
-  { "slug": "ara-290",                 "product": "ARA-290",
+  { "slug": "ara-290",                "product": "ARA-290",
+    "vials": [
+      { "dose": "10MG", "batch": "20260221-RA10-2BR9" }
+    ],
     "batches": [
       { "file": "2026-09-25-btl-20250600-ar10-2ab1.pdf",
         "date": "2026-09-25", "purity": "99.5%",
         "lab": "BTLabs", "lot": "20250600-AR10-2AB1", "reference": "COA261640-017" }
     ] },
-  { "slug": "b12",                     "product": "B12",
+  { "slug": "b12",                    "product": "B12",
+    "vials": [
+      { "dose": "10MG", "batch": "20260425-B12-3BF2" }
+    ],
     "batches": [
       { "file": "2026-09-25-btl-20260425-b12-3bf2.pdf",
         "date": "2026-09-25", "purity": "99.7%",
         "lab": "BTLabs", "lot": "20260425-B12-3BF2", "reference": "COA261640-026" }
     ] },
-  { "slug": "bpc-157",                 "product": "BPC-157",
+  { "slug": "bpc-157",                "product": "BPC-157",
+    "vials": [
+      { "dose": "10MG", "batch": "20260423-BC10-2CF1" }
+    ],
     "batches": [
       { "file": "2026-09-25-btl-20260423-bc10-2cf1.pdf",
         "date": "2026-09-25", "purity": "99.6%",
         "lab": "BTLabs", "lot": "20260423-BC10-2CF1", "reference": "COA261640-005" }
     ] },
-  { "slug": "bpc-157-tb-500",          "product": "BPC-157 / TB-500",
+  { "slug": "bpc-157-tb-500",         "product": "BPC-157 / TB-500",
+    "vials": [
+      { "dose": "20MG", "batch": "20260501-BB20-1AF2" },
+      { "dose": "30MG", "batch": "20260501-BB30-1AF2" }
+    ],
     "batches": [
       { "file": "2026-09-25-btl-20260501-bb20-1af2.pdf",
         "date": "2026-09-25", "purity": "99.6%",
         "lab": "BTLabs", "lot": "20260501-BB20-1AF2", "reference": "COA261640-007" }
     ] },
-  { "slug": "cagrilintide",            "product": "Cagrilintide",
+  { "slug": "cagrilintide",           "product": "Cagrilintide",
+    "vials": [
+      { "dose": "10MG", "batch": "20250417-CGL10-1AC3" }
+    ],
     "batches": [
       { "file": "2026-09-25-btl-21054769-cgl10-1ac3.pdf",
         "date": "2026-09-25", "purity": "99.6%",
         "lab": "BTLabs", "lot": "21054769-CGL10-1AC3", "reference": "COA261640-020" }
     ] },
-  { "slug": "cjc-1295-ipamorelin-no-dac",  "product": "CJC-1295 + Ipamorelin (No DAC)",
+  { "slug": "cjc-1295-ipamorelin-no-dac", "product": "CJC-1295 + Ipamorelin (No DAC)",
+    "vials": [
+      { "dose": "5MG + 5MG", "batch": "20260503-CP10-2AF1" }
+    ],
     "batches": [
       { "file": "2026-07-16-ils-20260503-cp10-2af1.pdf",
         "date": "2026-07-16", "purity": "98.38%",
         "lab": "ILS Labs", "lot": "20260503-CP10-2AF1", "reference": "COA-2026-953999" }
     ] },
-  { "slug": "dsip",                    "product": "DSIP",
+  { "slug": "dsip",                   "product": "DSIP",
+    "vials": [
+      { "dose": "15MG", "batch": "20260516-DS15-2CF1" }
+    ],
     "batches": [
       { "file": "2026-09-25-btl-20261506-ds10-2cf1.pdf",
         "date": "2026-09-25", "purity": "99.9%",
         "lab": "BTLabs", "lot": "20261506-DS10-2CF1", "reference": "COA261640-022" }
     ] },
-  { "slug": "epitalon",                "product": "Epitalon",
+  { "slug": "epitalon",               "product": "Epitalon",
+    "vials": [
+      { "dose": "50MG", "batch": "20260421-ET50-2BF2" }
+    ],
     "batches": [
       { "file": "2026-09-25-btl-20260421-et50-2bf2.pdf",
         "date": "2026-09-25", "purity": "99.6%",
         "lab": "BTLabs", "lot": "20260421-ET50-2BF2", "reference": "COA261640-014" }
     ] },
-  { "slug": "ghk-cu",                  "product": "GHK-CU",
+  { "slug": "ghk-cu",                 "product": "GHK-CU",
+    "vials": [
+      { "dose": "50MG", "batch": "20260505-CU50-1BF2" },
+      { "dose": "100MG", "batch": "20260505-CU100-1BF2" }
+    ],
     "batches": [
       { "file": "2026-09-25-btl-20260505-cu50-1bf2.pdf",
         "date": "2026-09-25", "purity": "99.7%",
         "lab": "BTLabs", "lot": "20260505-CU50-1BF2", "reference": "COA261640-004" }
     ] },
-  { "slug": "glutathione",             "product": "Glutathione",
+  { "slug": "glutathione",            "product": "Glutathione",
+    "vials": [
+      { "dose": "1500MG", "batch": "20260506-GTT1500-2BF1" }
+    ],
     "batches": [
       { "file": "2026-09-25-btl-20260506-gtt1500-2bf1.pdf",
         "date": "2026-09-25", "purity": "99.7%",
         "lab": "BTLabs", "lot": "20260506-GTT1500-2BF1", "reference": "COA261640-025" }
     ] },
-  { "slug": "glow",                    "product": "Glow",
+  { "slug": "glow",                   "product": "Glow",
+    "vials": [
+      { "dose": "70MG", "batch": "20260424-BBG70-1CF1" }
+    ],
     "batches": [
       { "file": "2026-07-16-ils-20260424-bbg70-1cf1.pdf",
         "date": "2026-07-16", "purity": "99.79%",
         "lab": "ILS Labs", "lot": "20260424-BBG70-1CF1", "reference": "COA-2026-953989" }
     ] },
-  { "slug": "ipamorelin",              "product": "Ipamorelin",
+  { "slug": "ipamorelin",             "product": "Ipamorelin",
+    "vials": [
+      { "dose": "10MG", "batch": "20250314-IP10-1AC6" }
+    ],
     "batches": [
       { "file": "2026-09-25-btl-202512601-ipa10-3b2a.pdf",
         "date": "2026-09-25", "purity": "99.9%",
         "lab": "BTLabs", "lot": "202512601-IPA10-3B2A", "reference": "COA261640-019" }
     ] },
-  { "slug": "kisspeptin-10",           "product": "Kisspeptin-10",
+  { "slug": "kisspeptin-10",          "product": "Kisspeptin-10",
+    "vials": [
+      { "dose": "10MG", "batch": "20260430-KS10-3CF1" }
+    ],
     "batches": [
       { "file": "2026-09-25-btl-20260430-ks10-3cf1.pdf",
         "date": "2026-09-25", "purity": "99.9%",
         "lab": "BTLabs", "lot": "20260430-KS10-3CF1", "reference": "COA261640-012" }
     ] },
-  { "slug": "klow",                    "product": "KLOW", "batches": [] },
-  { "slug": "kpv",                     "product": "KPV",
+  { "slug": "klow",                   "product": "KLOW",
+    "vials": [
+      { "dose": "80MG", "batch": "20260502-BBK80-2AF2" }
+    ],
+    "batches": [] },
+  { "slug": "kpv",                    "product": "KPV",
+    "vials": [
+      { "dose": "10MG", "batch": "20250423-KV10-1BC4" }
+    ],
     "batches": [
       { "file": "2026-09-25-btl-21261421-kp10-2bf3.pdf",
         "date": "2026-09-25", "purity": "99.6%",
         "lab": "BTLabs", "lot": "21261421-KP10-2BF3", "reference": "COA261640-015" }
     ] },
-  { "slug": "mots-c",                  "product": "MOTS-C",
+  { "slug": "mots-c",                 "product": "MOTS-C",
+    "vials": [
+      { "dose": "40MG", "batch": "20260429-MS40-3CF3" }
+    ],
     "batches": [
       { "file": "2026-09-25-btl-20260429-ms40-3cf3.pdf",
         "date": "2026-09-25", "purity": "99.9%",
         "lab": "BTLabs", "lot": "20260429-MS40-3CF3", "reference": "COA261640-024" }
     ] },
-  { "slug": "nad",                     "product": "NAD+",
+  { "slug": "nad",                    "product": "NAD+",
+    "vials": [
+      { "dose": "500MG", "batch": "20260508-NJ500-3BF2" },
+      { "dose": "1000MG", "batch": "20260508-NJ1000-3BF2" }
+    ],
     "batches": [
       { "file": "2026-09-25-btl-20260508-nj500-3bf2.pdf",
         "date": "2026-09-25", "purity": "99.9%",
         "lab": "BTLabs", "lot": "20260508-NJ500-3BF2", "reference": "COA261640-027" }
     ] },
-  { "slug": "pinealon",                "product": "Pinealon",
+  { "slug": "pinealon",               "product": "Pinealon",
+    "vials": [
+      { "dose": "20MG", "batch": "20250307-PIN20-1AD3" }
+    ],
     "batches": [
       { "file": "2026-09-25-btl-20160372-pin10-1ad3.pdf",
         "date": "2026-09-25", "purity": "99.4%",
         "lab": "BTLabs", "lot": "20160372-PIN10-1AD3", "reference": "COA261640-023" }
     ] },
-  { "slug": "pt-141",                  "product": "PT-141",
+  { "slug": "pt-141",                 "product": "PT-141",
+    "vials": [
+      { "dose": "10MG", "batch": "20250325-PT10-3BF2" }
+    ],
     "batches": [
       { "file": "2026-09-25-btl-20250631-pt10-2ac4.pdf",
         "date": "2026-09-25", "purity": "99.9%",
         "lab": "BTLabs", "lot": "20250631-PT10-2AC4", "reference": "COA261640-016" }
     ] },
-  { "slug": "retatrutide",             "product": "Retatrutide",
+  { "slug": "retatrutide",            "product": "Retatrutide",
+    "vials": [
+      { "dose": "20MG", "batch": "20260427-RT20-3BF2" },
+      { "dose": "30MG", "batch": "20260427-RT30-3BF2" },
+      { "dose": "60MG", "batch": "20260427-RT60-3BF2" }
+    ],
     "batches": [
       { "file": "2026-08-14-freedom-2608120388.pdf",
         "date": "2026-08-14", "purity": "99.98%",
         "lab": "Freedom Diagnostics", "lot": "Pink Cap", "reference": "2608120388" }
     ] },
-  { "slug": "selank",                  "product": "Selank",
+  { "slug": "selank",                 "product": "Selank",
+    "vials": [
+      { "dose": "10MG", "batch": "20260504-SK10-1AF3" }
+    ],
     "batches": [
       { "file": "2026-07-13-ils-20260504-sk10-1af3.pdf",
         "date": "2026-07-13", "purity": "99.13%",
         "lab": "ILS Labs", "lot": "20260504-SK10-1AF3", "reference": "COA-2026-ACWBDM" }
     ] },
-  { "slug": "selank-semax",            "product": "Selank / Semax", "batches": [] },
-  { "slug": "semax",                   "product": "Semax",
+  { "slug": "selank-semax",           "product": "Selank / Semax",
+    "vials": [
+      { "dose": "20MG", "batch": "20260507-XS20-2CF1" }
+    ],
+    "batches": [] },
+  { "slug": "semax",                  "product": "Semax",
+    "vials": [
+      { "dose": "10MG", "batch": "20260507-XA10-2CF1" }
+    ],
     "batches": [
       { "file": "2026-07-13-ils-20260507-xa10-2cf1.pdf",
         "date": "2026-07-13", "purity": "99.68%",
         "lab": "ILS Labs", "lot": "20260507-XA10-2CF1", "reference": "COA-2026-UDF8TS" }
     ] },
-  { "slug": "sermorelin",              "product": "Sermorelin",
+  { "slug": "sermorelin",             "product": "Sermorelin",
+    "vials": [
+      { "dose": "10MG", "batch": "20260420-SM10-1BF1" }
+    ],
     "batches": [
       { "file": "2026-09-25-btl-20260420-sm10-1bf1.pdf",
         "date": "2026-09-25", "purity": "99.8%",
         "lab": "BTLabs", "lot": "20260420-SM10-1BF1", "reference": "COA261640-013" }
     ] },
-  { "slug": "slu-pp-332",              "product": "SLU-PP-332",
+  { "slug": "slu-pp-332",             "product": "SLU-PP-332",
+    "vials": [
+      { "dose": "5MG", "batch": "20260428-S332-1CF3" }
+    ],
     "batches": [
       { "file": "2026-09-25-btl-20260428-s332-1cf3.pdf",
         "date": "2026-09-25", "purity": "99.4%",
         "lab": "BTLabs", "lot": "20260428-S332-1CF3", "reference": "COA261640-009" }
     ] },
-  { "slug": "ss-31",                   "product": "SS-31",
+  { "slug": "ss-31",                  "product": "SS-31",
+    "vials": [
+      { "dose": "10MG", "batch": "20260424-2S10-3AF2" }
+    ],
     "batches": [
       { "file": "2026-09-25-btl-20260424-2s10-3af2.pdf",
         "date": "2026-09-25", "purity": "99.8%",
         "lab": "BTLabs", "lot": "20260424-2S10-3AF2", "reference": "COA261640-010" }
     ] },
-  { "slug": "tb-500",                  "product": "TB-500",
+  { "slug": "tb-500",                 "product": "TB-500",
+    "vials": [
+      { "dose": "10MG", "batch": "20260430-BT10-3AF3" }
+    ],
     "batches": [
       { "file": "2026-09-25-btl-20260430-bt10-3af3.pdf",
         "date": "2026-09-25", "purity": "99.6%",
         "lab": "BTLabs", "lot": "20260430-BT10-3AF3", "reference": "COA261640-006" }
     ] },
-  { "slug": "tesamorelin",             "product": "Tesamorelin",
+  { "slug": "tesamorelin",            "product": "Tesamorelin",
+    "vials": [
+      { "dose": "10MG", "batch": "20260426-TSM10-3CF2" },
+      { "dose": "20MG", "batch": "20260426-TSM20-3CF2" }
+    ],
     "batches": [
       { "file": "2026-09-25-btl-20260426-tsm20-3cf2.pdf",
         "date": "2026-09-25", "purity": "99.8%",
         "lab": "BTLabs", "lot": "20260426-TSM20-3CF2", "reference": "COA261640-008" }
     ] },
-  { "slug": "tesamorelin-ipamorelin",  "product": "Tesamorelin / Ipamorelin",
+  { "slug": "tesamorelin-ipamorelin", "product": "Tesamorelin / Ipamorelin",
+    "vials": [
+      { "dose": "10MG", "batch": "20260420-TI10-3CF1" }
+    ],
     "batches": [
       { "file": "2026-07-16-ils-20260420-ti10-3cf1.pdf",
         "date": "2026-07-16", "purity": "99.71%",
         "lab": "ILS Labs", "lot": "20260420-TI10-3CF1", "reference": "COA-2026-954004" }
     ] },
-  { "slug": "thymosin-alpha-1",        "product": "Thymosin Alpha-1",
+  { "slug": "thymosin-alpha-1",       "product": "Thymosin Alpha-1",
+    "vials": [
+      { "dose": "10MG", "batch": "20260502-TA10-2BF1" }
+    ],
     "batches": [
       { "file": "2026-09-25-btl-20260502-ta10-2bf1.pdf",
         "date": "2026-09-25", "purity": "99.5%",
         "lab": "BTLabs", "lot": "20260502-TA10-2BF1", "reference": "COA261640-011" }
     ] },
-  { "slug": "tirzepatide",             "product": "Tirzepatide",
+  { "slug": "tirzepatide",            "product": "Tirzepatide",
+    "vials": [
+      { "dose": "10MG", "batch": "20260427-TR10-2BF3" },
+      { "dose": "40MG", "batch": "20260427-TR40-2BF3" },
+      { "dose": "60MG", "batch": "20260427-TR60-2BF3" }
+    ],
     "batches": [
       { "file": "2026-09-25-btl-20260427-tr40-2bf3.pdf",
         "date": "2026-09-25", "purity": "99.9%",
