@@ -72,12 +72,13 @@
     column-gap:14px;
     row-gap:6px;
     align-items:center;
-    padding:15px 18px 12px;
+    padding:15px 18px;
     width:100%;
     cursor:pointer;
     transition:background .1s;
   }
   .row:hover{background:var(--surface-soft)}
+  .row-line{display:flex;flex-direction:column;align-items:flex-end}
   .stack.open > .row-line > .row{background:var(--surface-soft)}
   .cell-name{grid-area:name;align-self:center;font:500 16px/1.25 var(--sans);color:var(--ink);min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
   .cell-purity{grid-area:purity;justify-self:end;font:500 15px/1 var(--mono);font-variant-numeric:tabular-nums;color:var(--ink)}
@@ -87,15 +88,16 @@
   .pass::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--spruce)}
   .pass-label{font:500 10.5px/1 var(--mono);letter-spacing:.13em;color:var(--spruce);text-transform:uppercase}
 
-  /* ---- always-visible COA button ---- */
+  /* ---- COA pill (compact, not a full-width bar) ---- */
   .view-coa{
-    display:flex;align-items:center;justify-content:center;
-    min-height:44px;margin:0 18px 16px;padding:0 14px;
-    background:var(--spruce);border-radius:7px;
-    font:500 11px/1 var(--mono);letter-spacing:.06em;color:var(--surface);
+    display:inline-flex;align-items:center;gap:5px;
+    height:34px;margin:0 18px 14px 0;padding:0 13px;
+    background:var(--spruce);border-radius:17px;
+    font:600 10px/1 var(--mono);letter-spacing:.05em;color:var(--surface);
     text-transform:uppercase;white-space:nowrap;text-decoration:none;
     transition:background .12s;
   }
+  .view-coa::after{content:"\2197";font-size:11px;line-height:1}
   .view-coa:hover{background:var(--spruce-deep)}
   .view-coa:focus-visible{outline:2px solid var(--spruce);outline-offset:2px}
 
@@ -127,31 +129,31 @@
 
     .register-head{
       display:grid;
-      grid-template-columns:minmax(0,2.4fr) 1fr 1.3fr minmax(78px,1fr) 110px;
-      gap:24px;padding:13px 214px 13px 40px;
+      grid-template-columns:minmax(0,2.4fr) 1fr 1.3fr 1fr 110px;
+      gap:24px;padding:13px 150px 13px 40px;
       border-bottom:1px solid var(--border);background:var(--surface-soft);
       font:400 9.5px/1 var(--mono);letter-spacing:.14em;color:var(--mono-mute);text-transform:uppercase;
     }
     .register-head .right{text-align:right}
 
     .row{
-      flex:1;min-width:0;
-      grid-template-columns:minmax(0,2.4fr) 1fr 1.3fr minmax(78px,1fr) 110px;
+      grid-template-columns:minmax(0,2.4fr) 1fr 1.3fr 1fr 110px;
       grid-template-areas:"name purity lab date status";
       column-gap:24px;row-gap:0;
-      padding:17px 24px 17px 40px;
+      padding:17px 150px 17px 40px;
     }
     .cell-name{font-size:15px;white-space:normal;overflow:visible;text-overflow:clip}
     .cell-purity{justify-self:start;font-size:14px}
     .cell-lab{display:block;font:400 13px/1.3 var(--sans);color:var(--ink-2)}
     .cell-date{display:block;font:400 12.5px/1 var(--mono);color:var(--ink-2);white-space:nowrap}
 
-    /* the button shares the row's line, so hover and zebra move up to the wrapper */
-    .row-line{display:flex;align-items:stretch}
-    .row-line:hover{background:var(--surface-soft)}
-    .row:hover{background:transparent}
-    .view-coa{flex:none;align-self:center;width:150px;margin:0 40px 0 0;padding:0 10px;font-size:10px}
-    .stack:not(.open):nth-child(even) > .row-line{background:var(--surface-soft)}
+    /* .row keeps the same box as .register-head (both pad 150px on the
+       right) so their grid tracks resolve to identical widths; the pill
+       floats in that reserved gutter instead of taking its own flex
+       share, which would make .row's grid narrower than the header's. */
+    .row-line{display:block;position:relative}
+    .view-coa{position:absolute;right:40px;top:50%;transform:translateY(-50%);margin:0;height:30px;padding:0 12px;font-size:9.5px}
+    .stack:not(.open):nth-child(even) > .row{background:var(--surface-soft)}
 
     /* desktop expansion: two-column panel below the row */
     .expand{padding:0 40px 22px;background:var(--surface-soft);border-bottom:1px solid var(--divider)}
@@ -292,7 +294,7 @@ function stackHTML(peptide){
       /* Same target the expand panel used to bury: a real link, so it is
          keyboard-reachable and opens the batch viewer in a new tab. */
       + '<a class="view-coa" href="'+url+'" target="_blank" rel="noopener"'
-        + ' aria-label="View full COA (PDF) for '+esc(peptide.product)+'">View Full COA (PDF)</a>'
+        + ' aria-label="View full COA (PDF) for '+esc(peptide.product)+'">View COA</a>'
     + '</div>'
     + '<div class="expand">'
       + '<div class="mobile-only">' + mobileGrid + '</div>'
