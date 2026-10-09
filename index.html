@@ -7,6 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Krona+One&family=Lexend:wght@700&display=swap" rel="stylesheet">
 <style>
   :root{
     --canvas:#EFEEEA;
@@ -186,6 +187,9 @@
   footer a:hover{color:var(--spruce)}
 
   .none{display:none !important}
+
+  h1.title .tw-logo{display:block;height:56px;width:auto}
+  @media (min-width:900px){ h1.title .tw-logo{height:66px} }
 </style>
 </head>
 <body>
@@ -193,7 +197,17 @@
 <header>
   <div class="header-inner">
     <div>
-      <h1 class="title">TIDELwave</h1>
+      <h1 class="title"><svg class="tw-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 200" role="img" aria-label="TIDElwave" fill="currentColor">
+  <defs>
+    <clipPath id="twl-band"><path d="M12 62 C60 92 120 78 170 48 C215 22 270 14 308 62 C268 36 222 44 182 66 C132 94 66 102 12 62 Z"/></clipPath>
+    <mask id="twl-cut" maskUnits="userSpaceOnUse" x="0" y="0" width="320" height="110"><rect width="320" height="110" fill="#fff"/><path d="M14 62 C62 96 124 86 176 57 C220 33 268 26 306 62" fill="none" stroke="#000" stroke-width="8"/></mask>
+  </defs>
+  <g transform="translate(222 0) scale(.9375)">
+    <path d="M12 62 C60 92 120 78 170 48 C215 22 270 14 308 62 C268 36 222 44 182 66 C132 94 66 102 12 62 Z" mask="url(#twl-cut)"/>
+    <g clip-path="url(#twl-band)"><path d="M14 62 C62 96 124 86 176 57 C220 33 268 26 306 62" fill="none" stroke="currentColor" stroke-width="8" stroke-dasharray="2.4 6.5"/></g>
+  </g>
+  <text x="380" y="178" text-anchor="middle"><tspan font-family="Krona One" font-size="92" letter-spacing="-2">TIDEL</tspan><tspan font-family="Lexend" font-weight="700" font-size="112" letter-spacing="-3">wave</tspan></text>
+</svg></h1>
     </div>
     <div class="search-wrap">
       <div class="search">
